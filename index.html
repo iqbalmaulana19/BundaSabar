@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BundaSabar - Pendamping orang tua menghadapi picky eating dan GTM pada anak usia dini.">
+  <title>BundaSabar — Feeding Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">B</div>
+        <div>
+          <strong>Bunda<span>Sabar</span></strong>
+          <small>Feeding Assistant</small>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item active" data-page="dashboard">
+          <span>⌂</span> Dashboard
+        </button>
+        <button class="nav-item" data-page="tracker">
+          <span>◷</span> Exposure Tracker
+        </button>
+        <button class="nav-item" data-page="chaining">
+          <span>↗</span> Food Chaining
+        </button>
+        <button class="nav-item" data-page="rules">
+          <span>☑</span> Feeding Rules
+        </button>
+      </nav>
+
+      <div class="sidebar-tip">
+        <div class="tip-icon">♥</div>
+        <strong>Pelan-pelan, Bunda.</strong>
+        <p>Setiap percobaan adalah bagian dari proses belajar si kecil.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+        <div class="page-title">
+          <span id="pageEyebrow">Dashboard</span>
+          <h1 id="pageTitle">Selamat datang, Bunda! 👋</h1>
+        </div>
+        <div class="top-actions">
+          <div class="date-pill" id="todayDate"></div>
+          <div class="avatar">B</div>
+        </div>
+      </header>
+
+      <!-- DASHBOARD -->
+      <section class="page active" id="dashboard">
+        <div class="hero">
+          <div>
+            <span class="eyebrow">PENDAMPING MAKAN SI KECIL</span>
+            <h2>Hari ini kita coba <span>pelan-pelan.</span></h2>
+            <p>Bunda tidak harus sempurna. Yang penting tetap tenang, konsisten, dan memberi kesempatan si kecil belajar mengenal makanan baru.</p>
+            <button class="primary-btn" id="panicHero">Anak Menolak Makan? <span>→</span></button>
+          </div>
+          <div class="hero-art">
+            <div class="sun"></div>
+            <div class="cloud cloud-one"></div>
+            <div class="cloud cloud-two"></div>
+            <div class="bowl">🥣</div>
+            <div class="leaf leaf-one">🍃</div>
+            <div class="leaf leaf-two">🌿</div>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PROGRES HARI INI</span>
+            <h3>Perjalanan makan si kecil</h3>
+          </div>
+          <button class="text-btn" data-page-link="tracker">Lihat semua →</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon orange">🥕</div>
+            <div><span>Makanan dikenalkan</span><strong id="foodCount">3</strong></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">✓</div>
+            <div><span>Paparan minggu ini</span><strong id="weeklyCount">8</strong></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">♥</div>
+            <div><span>Hari konsisten</span><strong>5 hari</strong></div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="eyebrow">REPEATED EXPOSURE</span>
+                <h3>Progres makanan</h3>
+              </div>
+              <span class="badge">8–15x</span>
+            </div>
+            <div id="dashboardFoods" class="food-list"></div>
+          </div>
+
+          <div class="card schedule-card">
+            <div class="card-header">
+              <div>
+                <span class="eyebrow">HARI INI</span>
+                <h3>Jadwal makan</h3>
+              </div>
+              <button class="icon-btn" data-page-link="rules">→</button>
+            </div>
+            <div id="dashboardSchedule"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRACKER -->
+      <section class="page" id="tracker">
+        <div class="page-intro">
+          <div>
+            <span class="eyebrow">REPEATED EXPOSURE TRACKER</span>
+            <h2>Catat setiap kesempatan</h2>
+            <p>Penolakan hari ini bukan berarti gagal. Setiap paparan membantu si kecil mengenal rasa, aroma, dan tekstur.</p>
+          </div>
+          <button class="primary-btn" id="addFoodBtn">+ Tambah makanan</button>
+        </div>
+        <div id="trackerList" class="tracker-grid"></div>
+      </section>
+
+      <!-- CHAINING -->
+      <section class="page" id="chaining">
+        <div class="page-intro">
+          <div>
+            <span class="eyebrow">FOOD CHAINING BUILDER</span>
+            <h2>Bangun jembatan makanan</h2>
+            <p>Mulai dari makanan yang sudah dikenal, lalu bergerak perlahan menuju makanan target.</p>
+          </div>
+          <button class="secondary-btn" id="addChainBtn">+ Buat rantai baru</button>
+        </div>
+
+        <div class="chain-example card">
+          <div class="chain-title">
+            <span class="eyebrow">CONTOH PERJALANAN</span>
+            <h3>Dari favorit → makanan target</h3>
+          </div>
+          <div class="chain-flow">
+            <div class="chain-item"><div>🍟</div><strong>French Fries</strong><small>Sudah dikenal</small></div>
+            <span class="arrow">→</span>
+            <div class="chain-item"><div>🥔</div><strong>Kroket Kentang</strong><small>Tekstur mirip</small></div>
+            <span class="arrow">→</span>
+            <div class="chain-item"><div>🥕</div><strong>Wortel Kukus</strong><small>Target</small></div>
+          </div>
+        </div>
+
+        <div class="section-heading compact">
+          <div><span class="eyebrow">RANTAI MAKANANMU</span><h3>Langkah bertahap</h3></div>
+        </div>
+        <div id="chainList" class="chain-list"></div>
+      </section>
+
+      <!-- RULES -->
+      <section class="page" id="rules">
+        <div class="page-intro">
+          <div>
+            <span class="eyebrow">FEEDING RULES REMINDER</span>
+            <h2>Jadwal yang konsisten</h2>
+            <p>Gunakan jadwal ini sebagai pengingat agar waktu makan utama dan camilan tetap teratur.</p>
+          </div>
+          <button class="secondary-btn" id="addScheduleBtn">+ Tambah jadwal</button>
+        </div>
+
+        <div class="rules-layout">
+          <div class="card">
+            <div class="card-header">
+              <div><span class="eyebrow">JADWAL HARI INI</span><h3>Waktu makan</h3></div>
+              <span class="badge green-badge">5 waktu</span>
+            </div>
+            <div id="fullSchedule" class="schedule-list"></div>
+          </div>
+
+          <div class="card rules-note">
+            <div class="note-icon">💡</div>
+            <span class="eyebrow">CATATAN UNTUK BUNDA</span>
+            <h3>Berikan ruang untuk rasa lapar alami.</h3>
+            <p>Dokumen BundaSabar menggunakan pola 3 kali makan utama dan 2 kali camilan, serta membatasi susu atau camilan di luar jadwal.</p>
+            <div class="rule-pills"><span>3× Makan Utama</span><span>2× Camilan</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- PANIC MODAL -->
+  <div class="modal-backdrop" id="panicModal">
+    <div class="modal panic-modal">
+      <button class="modal-close" data-close="panicModal">×</button>
+      <div class="panic-top">
+        <div class="panic-icon">🫶</div>
+        <span class="eyebrow">PANIC BUTTON GTM</span>
+        <h2>Tarik napas, Bunda.</h2>
+        <p>Anak menolak makan bukan berarti Bunda gagal. Mari lakukan langkah kecil berikut.</p>
+      </div>
+
+      <div class="panic-progress">
+        <div class="timer-circle" id="timerCircle">
+          <strong id="timerDisplay">05:00</strong>
+          <small>jeda</small>
+        </div>
+      </div>
+
+      <div class="panic-steps" id="panicSteps">
+        <div class="panic-step active"><span>1</span><div><strong>Beri jeda</strong><p>Berikan waktu sekitar 5 menit agar suasana kembali tenang.</p></div></div>
+        <div class="panic-step"><span>2</span><div><strong>Kenalkan tanpa memaksa</strong><p>Ajak si kecil melihat dan meraba makanan tanpa harus langsung menelan.</p></div></div>
+        <div class="panic-step"><span>3</span><div><strong>Ajak mencium</strong><p>Biarkan anak mengenali aroma makanan dengan santai.</p></div></div>
+        <div class="panic-step"><span>4</span><div><strong>Tetap tenang</strong><p>Jika belum mau, tetap tenang dan coba lagi pada kesempatan berikutnya.</p></div></div>
+      </div>
+
+      <div class="panic-actions">
+        <button class="secondary-btn" id="prevStep" disabled>← Sebelumnya</button>
+        <button class="primary-btn" id="nextStep">Mulai langkah →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOD MODAL -->
+  <div class="modal-backdrop" id="foodModal">
+    <div class="modal">
+      <button class="modal-close" data-close="foodModal">×</button>
+      <span class="eyebrow">MAKANAN BARU</span>
+      <h2>Tambah makanan</h2>
+      <p class="modal-subtitle">Catat makanan yang sedang diperkenalkan kepada si kecil.</p>
+      <form id="foodForm">
+        <label>Nama makanan
+          <input id="foodName" type="text" placeholder="Contoh: Brokoli" required>
+        </label>
+        <label>Emoji
+          <input id="foodEmoji" type="text" value="🥦" maxlength="2">
+        </label>
+        <label>Target paparan
+          <select id="foodTarget">
+            <option value="8">8 kali</option>
+            <option value="10">10 kali</option>
+            <option value="12" selected>12 kali</option>
+            <option value="15">15 kali</option>
+          </select>
+        </label>
+        <button class="primary-btn full" type="submit">Simpan makanan</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHAIN MODAL -->
+  <div class="modal-backdrop" id="chainModal">
+    <div class="modal">
+      <button class="modal-close" data-close="chainModal">×</button>
+      <span class="eyebrow">FOOD CHAINING</span>
+      <h2>Buat rantai makanan</h2>
+      <p class="modal-subtitle">Masukkan makanan dari yang paling familiar sampai makanan target.</p>
+      <form id="chainForm">
+        <label>Makanan awal
+          <input id="chainStart" type="text" placeholder="Contoh: Nugget" required>
+        </label>
+        <label>Transisi
+          <input id="chainMiddle" type="text" placeholder="Contoh: Ayam panggang" required>
+        </label>
+        <label>Makanan target
+          <input id="chainTarget" type="text" placeholder="Contoh: Ayam kukus" required>
+        </label>
+        <button class="primary-btn full" type="submit">Simpan rantai</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
